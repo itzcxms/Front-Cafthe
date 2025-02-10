@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import ProductCard from "../components/ProductCard";
 
 function ProductList(props) {
     const [produits, setProduits] = useState([]);
@@ -7,7 +8,7 @@ function ProductList(props) {
     useEffect(() => {
         const fetchProduits = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/api-cafthe");
+                const response = await axios.get("http://localhost:3000/api/produits");
                 setProduits(response.data);
             } catch(error) {
                 console.error("Erreur de chargement des produits ", error);
@@ -19,6 +20,11 @@ function ProductList(props) {
     return (
         <div>
             <h3>Liste des produits</h3>
+            <div className="product-list">
+                {produits.map((produit) => (
+                    <ProductCard key={produit.id} produit={produit} />
+                ))}
+            </div>
         </div>
     );
 }
