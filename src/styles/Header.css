@@ -1,0 +1,10 @@
+.banniere {
+    background-color: #5D4A2D;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    height: 33px;
+}
+.texte-banniere {
+    color: white;
+}

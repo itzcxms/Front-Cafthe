@@ -1,0 +1,67 @@
+nav {
+    border-bottom: 1px solid rgba(93, 74, 45, 0.5);
+}
+
+.container-navbar {
+    margin: 0 30px;
+}
+
+.logo img
+{
+    width: 150px;
+}
+
+.navbar-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 120px;
+}
+
+.search-bar {
+    height: 45px;
+    width: 700px;
+    color: rgba(7, 7, 7, 0.5);
+    background-color: rgba(93, 74, 45, 0.2);
+    border-radius: 22px;
+    border: none;
+    padding: 0 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.search-bar input {
+    background: transparent;
+    border: none;
+    width: 100%;
+}
+.search-bar input:focus {
+    outline: none;
+}
+.search-bar .icone-recherche {
+    align-content: center;
+}
+
+.navbar-bottom ul {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.navbar-bottom ul li {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    list-style: none;
+    margin-right: 30px;
+    font-size: 16px;
+    color: #070707;
+}
+
+/* logos de droite */
+.logos-droite {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
