@@ -1,0 +1,33 @@
+.productCard {
+    display: flex;
+    flex-direction: column;
+    max-width: 255px;
+    color: #070707;
+    text-decoration: none;
+    gap: 15px;
+}
+
+.productCard img {
+    border-radius: 20px;
+}
+
+.productCard div {
+    display: flex;
+    flex-direction: column;
+}
+
+.nomProduit, .prixProduit {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.24px;
+    line-height: 18.5px;
+    color: #4b2307;
+}
+
+.nomProduit {
+    text-transform: uppercase;
+}
+
+.prixProduit {
+    font-size: 14px;
+}

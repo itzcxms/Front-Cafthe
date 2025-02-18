@@ -3,15 +3,17 @@ import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import {Link} from "react-router-dom";
+import "../styles/ProductList.css";
 
-function ProductList(props) {
+function ProductList({api, voirPlus}) {
     const [produits, setProduits] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchProduits = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/api/produits");
+                const response = await axios.get(api);
                 setProduits(response.data);
             } catch(error) {
                 console.error("Erreur de chargement des produits ", error);
@@ -48,12 +50,18 @@ function ProductList(props) {
 
     return (
         <div>
-            <h3>Liste des produits</h3>
             <div className="product-list">
                 {produits.map((produit) => (
                     <ProductCard key={produit.id} produit={produit} />
                 ))}
             </div>
+
+
+                <Link to={voirPlus} className={""}>
+            <div className="btn-primary">
+                        Voir plus
+            </div>
+                </Link>
         </div>
     );
 }

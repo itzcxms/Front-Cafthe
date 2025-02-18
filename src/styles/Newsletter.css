@@ -1,0 +1,38 @@
+.newsletter {
+    width: 100%;
+}
+
+.containerNewsletter {
+    background-color: #5D4A2D;
+    margin: 0px 60px;
+    height: 240px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.newsletter .titre {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 48px;
+    color: white;
+}
+
+.newsletter .containerImages {
+    width: 50%;
+    display: flex;
+    align-items: end;
+}
+
+.newsletter .containerText {
+    display: flex;
+    flex-direction: column;
+}
+
+.newsletter .btn-secondary {
+    margin-top: 30px;
+}
+
+.gobelet {
+    margin-left: -80px;
+    height: min-content;
+}

@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
 import { AuthProvider} from "./context/AuthContext";
+import "./styles/fonts.css";
 
 function App() {
   return (
