@@ -6,6 +6,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
 import { AuthProvider} from "./context/AuthContext";
 import "./styles/fonts.css";
+import AllProducts from "./pages/AllProducts";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
                     <Route index element={<Home />} />
                     <Route path="produit/:id" element={<ProductDetails />}/>
                     <Route path="connexion" element={<Login />} />
+                    <Route path="produits" element={<AllProducts />} />
                 </Route>
             </Routes>
           </Router>

@@ -1,0 +1,64 @@
+.containerAllProducts {
+    display: flex;
+    margin: 60px;
+
+}
+
+.barreFiltres {
+    border-right: 1px solid black;
+    margin-right: 40px;
+}
+
+.filter-category {
+    margin-bottom: 30px;
+    padding-right: 60px;
+}
+
+.filter-title {
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.filter-options {
+    margin-top: 10px;
+    list-style: none;
+    padding: 0;
+}
+.filter-options li {
+    margin-bottom: 8px;
+}
+
+/* Cacher le checkbox par défaut */
+.checkbox input {
+    display: none;
+}
+
+/* Checkbox personnalisé */
+.checkbox span {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    border: 2px solid #555;
+    border-radius: 4px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.checkbox input:checked + span {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.checkbox input:checked + span::after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

@@ -5,6 +5,22 @@ import '../styles/Home.css';
 function Home(props) {
     return (
         <div className={"containerHome"}>
+            {/* BENTO */}
+            <div className="bento-box">
+                <div className="bento-child one">
+                    <img src="./assets/images/bento-1.png" alt=""/>
+                </div>
+                <div className="bento-child two">
+                    <img src="./assets/images/bento-2.png" alt=""/>
+                </div>
+                <div className="bento-child three">
+                    <img src="./assets/images/bento-3.png" alt=""/>
+                </div>
+                <div className="bento-child four">
+                    <img src="./assets/images/bento-4.jpg" alt=""/>
+                </div>
+            </div>
+
             <h2>Nos best-sellers</h2>
             <ProductList api={"http://localhost:3000/api/home-best-sellers"} voirPlus={"/cafes"}/>
 
@@ -13,14 +29,11 @@ function Home(props) {
                 <div className="categoriesColonnes">
                     <img src="./assets/images/nos-cafes.jpg" alt=""/>
                     <img src="./assets/images/nos-thes.jpg" alt=""/>
-                    <img src="./assets/images/nos-cafes.jpg" alt=""/>
-                    <img src="./assets/images/nos-thes.jpg" alt=""/>
+                    <img src="./assets/images/nos-infusions.jpg" alt=""/>
+                    <img src="./assets/images/nos-accessoires.jpg" alt=""/>
                 </div>
             </div>
-
             <h2>Titre</h2>
-
-
         </div>
     );
 }

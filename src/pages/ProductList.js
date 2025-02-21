@@ -25,6 +25,7 @@ function ProductList({api, voirPlus}) {
         void fetchProduits();
     }, []);
 
+    { /* SQUELETTE */ }
     if (isLoading) {
         return (
             <div className="product-list">
@@ -56,12 +57,9 @@ function ProductList({api, voirPlus}) {
                 ))}
             </div>
 
+            {/* Bouton TOUT VOIR */}
+            <Link to={voirPlus}><div className="btn-primary">Voir plus</div></Link>
 
-                <Link to={voirPlus} className={""}>
-            <div className="btn-primary">
-                        Voir plus
-            </div>
-                </Link>
         </div>
     );
 }

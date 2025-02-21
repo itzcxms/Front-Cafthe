@@ -2,6 +2,24 @@
     margin: 0 60px;
 }
 
+/* BENTO */
+.bento-box {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr 1fr;
+    grid-gap: 50px;
+}
+
+.bento-child img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.bento-child.four {
+    grid-column: 2/4;
+    grid-row: 2/3;
+}
+
 .categoriesImages img {
     border-radius: 20px;
     box-shadow: 0px 0px 5px 0px rgba(7,7,7,1);
