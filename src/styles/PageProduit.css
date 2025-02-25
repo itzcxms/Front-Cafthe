@@ -17,6 +17,18 @@ hr {
     max-width: 600px;
 }
 
+.poidsProduit {
+    display: flex;
+    flex-direction: column;
+}
+
+.poidsProduit select {
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+
 .caracteristique {
     display: flex;
 }

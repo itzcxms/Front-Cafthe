@@ -4,7 +4,7 @@ import axios from "axios";
 import "../styles/PageProduit.css";
 import ProductList from "./ProductList";
 
-function ProductDetails(props) {
+function PageProduit(props) {
     const { id } = useParams();
     const [produit, setProduit] = useState([]);
 
@@ -21,6 +21,41 @@ function ProductDetails(props) {
         void fetchProduit();
     }, [id]);
 
+    const [poids, setPoids] = useState([]);
+
+    useEffect(() => {
+        const fetchPoids = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/api/variantes/poids/${id}`);
+                console.log(response.data)
+                setPoids(response.data);
+            } catch(error) {
+                console.error("Erreur de chargement des produits ", error);
+            }
+        };
+
+        void fetchPoids();
+    }, [id]);
+
+     const [selectedPoids, setSelectedPoids] = useState([]);
+     const [selectedPrix, setSelectedPrix] = useState([]);
+
+     const handlePoidsChange = (event) => {
+         const poidsChoisi = event.target.value;
+         setSelectedPoids(poidsChoisi);
+
+         const variante = poids.find((item) => item.poids.toString() === poidsChoisi);
+         if (variante) {
+             setSelectedPrix(variante.prix);
+         }
+     }
+
+    useEffect(() => {
+        if (poids.length > 0) {
+            setSelectedPoids(poids[0].poids);
+            setSelectedPrix(poids[0].prix);
+        }
+    }, [poids]); // Exécuté dès que les poids sont chargés
 
     return (
         <div>
@@ -35,7 +70,7 @@ function ProductDetails(props) {
                         </h3>
                         {/* etoiles avis */}
                         <span className="prixProduit">
-                        12,49€
+                            {selectedPrix ? `${selectedPrix} €` : "Sélectionnez un poids"}
                         </span>
                         <span className="prixKilo">
 
@@ -43,7 +78,16 @@ function ProductDetails(props) {
                         <p className="descProduit">
                             {produit.desc_longue}
                         </p>
-                        {/*Menu déroulant poids*/}
+
+                        <div className="poidsProduit">
+                            <span>Poids</span>
+                            <select onChange={handlePoidsChange}>
+                                {poids.map((item, i) => (
+                                    <option key={i} value={item.poids}>{item.poids} g</option>
+                                    ))}
+                            </select>
+                        </div>
+
                         {/*Qte*/}
                         <div className="btn-primary ajouterAuPanier">
                             Ajouter au panier
@@ -90,4 +134,4 @@ function ProductDetails(props) {
     );
 }
 
-export default ProductDetails;
+export default PageProduit;

@@ -2,7 +2,7 @@ import './styles/App.css';
 import Layout from './layout/Layout';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import ProductDetails from "./pages/ProductDetails";
+import PageProduit from "./pages/PageProduit";
 import Login from "./pages/Login";
 import { AuthProvider} from "./context/AuthContext";
 import "./styles/fonts.css";
@@ -15,7 +15,7 @@ function App() {
             <Routes>
                 <Route path={"/"} element={<Layout />}>
                     <Route index element={<Home />} />
-                    <Route path="produit/:id" element={<ProductDetails />}/>
+                    <Route path="produit/:id" element={<PageProduit />}/>
                     <Route path="connexion" element={<Login />} />
                     <Route path="produits" element={<AllProducts />} />
                 </Route>

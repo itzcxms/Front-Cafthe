@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductList from "./ProductList";
 import '../styles/Home.css';
+import {Link} from "react-router-dom";
 
 function Home(props) {
     return (
@@ -27,10 +28,21 @@ function Home(props) {
             <h2>Naviguer par catégorie</h2>
             <div className="categoriesImages">
                 <div className="categoriesColonnes">
-                    <img src="./assets/images/noscafes.jpg" alt=""/>
-                    <img src="./assets/images/nosthes.jpg" alt=""/>
-                    <img src="./assets/images/nosinfusions.jpg" alt=""/>
-                    <img src="./assets/images/nosaccessoires.jpg" alt=""/>
+                    <Link to={`/cafes`}>
+                        <img src="./assets/images/nos-cafes.jpg" alt=""/>
+                    </Link>
+
+                    <Link to={`/thes`}>
+                        <img src="./assets/images/nos-thes.jpg" alt=""/>
+                    </Link>
+
+                    <Link to={`/infusions`}>
+                        <img src="./assets/images/nos-infusions.jpg" alt=""/>
+                    </Link>
+
+                    <Link to={`/accessoires`}>
+                        <img src="./assets/images/nos-accessoires.jpg" alt=""/>
+                    </Link>
                 </div>
             </div>
             <h2>Titre</h2>
