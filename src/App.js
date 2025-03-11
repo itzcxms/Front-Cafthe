@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import { AuthProvider} from "./context/AuthContext";
 import "./styles/fonts.css";
 import AllProducts from "./pages/AllProducts";
+import MonCompte from "./components/MonCompte";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="produit/:id" element={<PageProduit />}/>
                     <Route path="connexion" element={<Login />} />
                     <Route path="produits" element={<AllProducts />} />
+                    <Route path="monCompte" element={<MonCompte />} />
                 </Route>
             </Routes>
           </Router>

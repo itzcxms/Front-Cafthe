@@ -7,11 +7,12 @@ import ProductList from "./ProductList";
 function PageProduit(props) {
     const { id } = useParams();
     const [produit, setProduit] = useState([]);
+    const [quantite, setQuantite] = useState(1);
 
     useEffect(() => {
         const fetchProduit = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/produits/${id}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/produits/${id}`);
                 setProduit(response.data);
             } catch(error) {
                 console.error("Erreur de chargement des produits ", error);
@@ -26,7 +27,7 @@ function PageProduit(props) {
     useEffect(() => {
         const fetchPoids = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/variantes/poids/${id}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/variantes/poids/${id}`);
                 console.log(response.data)
                 setPoids(response.data);
             } catch(error) {
@@ -56,6 +57,18 @@ function PageProduit(props) {
             setSelectedPrix(poids[0].prix);
         }
     }, [poids]); // Exécuté dès que les poids sont chargés
+
+    const augmenterQuantite = () => {
+        if (quantite < 99) {
+            setQuantite(quantite + 1);
+        }
+    };
+
+    const diminuerQuantite = () => {
+        if (quantite > 1) {
+            setQuantite(quantite - 1);
+        }
+    };
 
     return (
         <div>
@@ -88,10 +101,18 @@ function PageProduit(props) {
                             </select>
                         </div>
 
-                        {/*Qte*/}
-                        <div className="btn-primary ajouterAuPanier">
-                            Ajouter au panier
+                        <div className="qtePanier">
+                            <div className="qte">
+                                <button onClick={diminuerQuantite}>-</button>
+                                <span>{quantite}</span>
+                                <button onClick={augmenterQuantite}>+</button>
+                            </div>
+
+                            <div className="btn-primary ajouterAuPanier">
+                                Ajouter au panier
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 <hr/>
@@ -127,7 +148,7 @@ function PageProduit(props) {
                 </div>
 
                 <h2>Vous aimerez aussi...</h2>
-                <ProductList api={"http://localhost:3000/api/home-best-sellers"} voirPlus={"/cafes"}/>
+                <ProductList api={`${process.env.REACT_APP_API_URL}/api/home-best-sellers`} voirPlus={"/cafes"}/>
 
             </div>
         </div>

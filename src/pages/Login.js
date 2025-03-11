@@ -17,29 +17,34 @@ function Login(props) {
 
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/clients/login",
+                `${process.env.REACT_APP_API_URL}/api/clients/login`,
                 {
                     email,
                     mot_de_passe,
-                },
+                }
             );
 
-            const { token, client } = response.data;
+            const { jwtToken, client } = response.data;
 
-            // On met a jour contexte d'authentification
-            login(token, client);
+            console.log("Réponse de l'API :", response.data); // Vérifie la réponse de l'API
 
-            // Redirection du client vers une page
-            navigate("/");
+            // Mise à jour du contexte d'authentification
+            login(jwtToken, client); // Utilise jwtToken et client
+
+            console.log("Données après login :", jwtToken, client);
+
+            navigate("/monCompte"); // Redirection vers la page d'accueil après la connexion
+
         } catch (error) {
             console.error("Erreur lors de la connexion : ", error);
-            if (error.response.data.message) {
+            if (error.response && error.response.data.message) {
                 setErrorMsg(error.response.data.message);
             } else {
-                setErrorMsg("Erreur");
+                setErrorMsg("Erreur inconnue lors de la connexion");
             }
         }
     };
+
 
     return (
         <div style={{ margin: "50px auto", maxWidth: 400 }}>

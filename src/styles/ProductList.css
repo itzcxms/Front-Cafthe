@@ -1,24 +1,22 @@
-.product-list {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    justify-content: start;
-    padding: 10px;
+.containerListeProduits {
+    justify-items: left;
 }
 
+.product-list {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
 
-/* Petit écran */
 @media screen and (max-width: 768px) {
     .product-list {
-        grid-template-columns: repeat(2, 1fr); /* 2 produits */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Assurer une taille correcte des cartes produits */
 .productCard {
     width: 100%;
-    max-width: 250px; /* Pour éviter qu'elles deviennent trop grandes */
-    margin: 0 auto; /* Centrage si nécessaire */
+    max-width: 250px;
 }
 
 .productCard img {

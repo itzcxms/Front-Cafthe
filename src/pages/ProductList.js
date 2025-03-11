@@ -50,7 +50,7 @@ function ProductList({api, voirPlus}) {
     }
 
     return (
-        <div>
+        <div className={"containerListeProduits"}>
             <div className="product-list">
                 {produits.map((produit) => (
                     <ProductCard key={produit.id} produit={produit} />
