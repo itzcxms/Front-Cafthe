@@ -13,6 +13,13 @@ h2 {
     text-decoration: none;
     font-size: 15px;
     font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary a {
+    text-decoration: none;
+    color: white;
 }
 
 .btn-primary {
@@ -20,7 +27,58 @@ h2 {
     color: #ffffff;
 }
 
+.btn-primary:hover {
+    background-color: #8b5a2b;
+    transform: translateY(-2px);
+}
+
 .btn-secondary {
     background-color: #fff;
     color: black;
+}
+
+/* FORMS */
+.forms {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.forms .containerInput {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.forms input {
+    border-radius: 8px;
+    border: 1px solid #c9c9c9;
+    padding: 16px 12px;
+    width: 100%;
+}
+.forms input::placeholder {
+    color: #A8A8A8;
+}
+.forms input:focus {
+    outline-color: #5D4A2D;
+}
+.forms a {
+    color: #1D1C25;
+    text-decoration: none;
+    cursor: pointer;
+}
+.forms #checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+.forms #checkboxLabel input {
+    width: auto;
+}
+.forms span {
+    color: #7A7980;
+}
+.forms button {
+    width: 100%;
+}
+.forms label {
+    display: flex;
 }

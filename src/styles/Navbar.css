@@ -95,9 +95,12 @@
     text-decoration: none;
     font-size: 20px;
     transition: color 0.3s ease, transform 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
-.navbar-icon:hover {
+.navbar-icon svg:hover {
     color: #8b5a2b;
     transform: translateY(-2px);
 }
@@ -291,4 +294,121 @@
     .navbar-actions {
         gap: 10px;
     }
+}
+
+/************************
+        PANIER
+*************************/
+
+.panierSidebar {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    right: 0;
+    top: 0;
+    width: 35%;
+    min-width: 550px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    padding: 20px;
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+}
+
+.panierSidebar.open {
+    display: flex;
+}
+
+.fermerPanier {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.panierSidebar .btn-checkout {
+    width: 100%;
+    text-align: center;
+}
+
+.panierSidebar ul {
+    padding: 0;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.panierSidebar ul li {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.panierSidebar ul li img {
+    max-width: 150px;
+    border-radius: 10px;
+}
+
+.panierSidebar .produitsPanierDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+.panierSidebar .produitNom {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.24px;
+    line-height: 18.5px;
+    color: #4b2307;
+    text-transform: uppercase;
+}
+
+.panierSidebar .qte {
+    background-color: #5D4A2D;
+    height: 40px;
+    border-radius: 10px;
+    width: 80px;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.panierSidebar .actions button {
+    border: none;
+    color: white;
+    font-size: 16px;
+    background: none;
+    cursor: pointer;
+}
+
+.panierSidebar .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.panierSidebar .actions .supp button {
+    font-size: 20px;
+    color: #5D4A2D;
+}
+
+.navbar-icon .bullePanier {
+    font-size: 10px;
+    position: absolute;
+    background: #5D4A2D;
+    color: white;
+    border-radius: 100px;
+    padding: 4px;
+    margin-left: 25px;
+    top: 25px;
 }

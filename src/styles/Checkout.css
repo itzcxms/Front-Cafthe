@@ -1,0 +1,164 @@
+.checkout {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.containerCheckout {
+    display: flex;
+    max-width: 1400px;
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+    gap: 30px;
+}
+.containerInfos, .panierCheckoutContainer {
+    background-color: #F3F2F2;
+    border-radius: 6px;
+    padding: 40px;
+}
+.infosFacturation {
+    width: 55%;
+}
+.panierCheckout {
+    width: 45%;
+}
+.panierCheckoutContainer {
+    border-top-right-radius: 44px;
+    border-bottom-left-radius: 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.panierCheckout .produitsPanierDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+}
+.panierCheckout ul {
+    padding: 0;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.panierCheckout ul li {
+    display: flex;
+    gap: 20px;
+}
+.panierCheckout ul li img {
+    max-width: 150px;
+    border-radius: 10px;
+}
+.panierCheckout .produitNom {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.24px;
+    line-height: 18.5px;
+    color: #4b2307;
+    text-transform: uppercase;
+}
+#produitNomPrix {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+.panierCheckout .qte {
+    background-color: #5D4A2D;
+    height: 40px;
+    border-radius: 10px;
+    width: 80px;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.panierCheckout .actions button {
+    border: none;
+    color: white;
+    font-size: 16px;
+    background: none;
+    cursor: pointer;
+}
+
+.panierCheckout .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.panierCheckout .actions .supp button {
+    font-size: 20px;
+    color: #5D4A2D;
+}
+.panierCheckout .produitPoids {
+    font-size: 12px;
+}
+
+.checkout .forms input {
+    border: none;
+    background-color: #EDEDED;
+    color: black;
+
+}
+
+.checkout .forms input::placeholder {
+    color: #8D8686;
+}
+
+.checkout hr {
+     background-color: #F3F2F2;
+ }
+
+#codePromo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#champCodePromo {
+    display: flex;
+    flex-direction: row;
+    height: 42px;
+    width: 70%;
+}
+#champCodePromo button {
+    width: 50px;
+    height: 42px;
+}
+
+.panierCheckout .sousTotal {
+    display: flex;
+    justify-content: space-between;
+}
+
+.panierCheckout .total {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* TITRE DES SECTIONS */
+.titreSection {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.titreSection div {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+.titreSection svg {
+    color: #5D4A2D;
+    font-size: 20px;
+}
+.titreSection #titre {
+    color: #403937;
+    font-size: 16px;
+    line-height: 130%;
+}
+.titreSection #sous-titre {
+    color: #574F4D;
+    font-size: 14px;
+    line-height: 130%;
+}

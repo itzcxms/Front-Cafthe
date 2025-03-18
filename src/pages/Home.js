@@ -11,7 +11,7 @@ const CATEGORIES = [
 ];
 
 const BENTO_IMAGES = [
-    { src: './assets/images/bento-1.pngS', alt: 'Présentation produit 1', className: 'one' },
+    { src: './assets/images/bento-1.png', alt: 'Présentation produit 1', className: 'one' },
     { src: './assets/images/bento-2.png', alt: 'Présentation produit 2', className: 'two' },
     { src: './assets/images/bento-3.png', alt: 'Présentation produit 3', className: 'three' },
     { src: './assets/images/bento-4.jpg', alt: 'Présentation produit 4', className: 'four' }

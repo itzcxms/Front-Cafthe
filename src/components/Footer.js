@@ -4,7 +4,7 @@ import '../styles/Footer.css';
 function Footer(props) {
     return (
         <div className="containerFooter">
-            { /* Newsletter */}
+            { /* Newsletter
             <div className="newsletter">
                 <div className="containerNewsletter">
                     <div className={"containerImages"}>
@@ -20,6 +20,7 @@ function Footer(props) {
                     </div>
                 </div>
             </div>
+            */}
 
             { /* Avis clients */ }
             { /* FAQ */ }

@@ -8,13 +8,14 @@ import {
     faMagnifyingGlass,
     faUser,
     faBars,
-    faXmark
+    faXmark,
+    faTrash
 } from '@fortawesome/free-solid-svg-icons';
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { CartContext } from "../context/CartContext";
 
-
-const NAV_ITEMS = [
+const MENUS_NAVBAR = [
     {
         title: 'Nos cafés',
         path: '/cafes',
@@ -51,9 +52,18 @@ const NAV_ITEMS = [
 ];
 
 function Navbar() {
+    const { isAuthenticated } = useContext(AuthContext);
+    const { cart, totalItems, totalPrice, removeFromCart, updateQuantity } = useContext(CartContext);
+
     const [searchTerm, setSearchTerm] = useState('');
     const [activeDropdown, setActiveDropdown] = useState(null);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [panierOuvert, setPanierOuvert] = useState(false);
+    const [quantite, setQuantite] = useState(1);
+
+    const togglePanier = () => {
+        setPanierOuvert(!panierOuvert);
+    }
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
@@ -73,15 +83,25 @@ function Navbar() {
         setMobileMenuOpen(!mobileMenuOpen);
     };
 
-    const { isAuthenticated } = useContext(AuthContext);
+    const augmenterQuantite = () => {
+        setQuantite(quantite + 1);
+    };
+
+    const diminuerQuantite = () => {
+        if (quantite > 1) {
+            setQuantite(quantite - 1);
+        }
+    };
 
     return (
+        <>
+
         <nav className="navbar">
             <div className="container-navbar">
                 <div className="navbar-top">
                     <div className="logo">
                         <Link to="/">
-                            <img src={logoCafthe} alt="Logo" />
+                            <img src={logoCafthe} alt="Logo"/>
                         </Link>
                     </div>
 
@@ -94,41 +114,48 @@ function Navbar() {
                             aria-label="Rechercher"
                         />
                         <button type="submit" className="search-button" aria-label="Rechercher">
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            <FontAwesomeIcon icon={faMagnifyingGlass}/>
                         </button>
                     </form>
 
                     <div className="navbar-actions">
-                        { isAuthenticated ? (
+                        {isAuthenticated ? (
                             <>
                                 <Link to="/monCompte" className="navbar-icon" aria-label="Mon compte">
-                                    <FontAwesomeIcon icon={faUser} />
+                                    <FontAwesomeIcon icon={faUser}/>
                                 </Link>
                             </>
                         ) : (
                             <Link to="/connexion" className="navbar-icon" aria-label="Mon compte">
-                                <FontAwesomeIcon icon={faUser} />
+                                <FontAwesomeIcon icon={faUser}/>
                             </Link>
                         )}
 
-
-                        <Link to="/panier" className="navbar-icon" aria-label="Mon panier">
-                            <FontAwesomeIcon icon={faBagShopping} />
-                        </Link>
+                        <button
+                            id="panier-icon"
+                            className={"navbar-icon"}
+                            onClick={togglePanier}
+                            aria-label="Panier"
+                        >
+                            <FontAwesomeIcon icon={faBagShopping} id="fa-icon-panier" />
+                            <span className="bullePanier">
+                                {totalItems}
+                            </span>
+                        </button>
 
                         <button
                             className="mobile-menu-toggle"
                             onClick={toggleMobileMenu}
                             aria-label="Menu"
                         >
-                            <FontAwesomeIcon icon={mobileMenuOpen ? faXmark : faBars} />
+                            <FontAwesomeIcon icon={mobileMenuOpen ? faXmark : faBars}/>
                         </button>
                     </div>
                 </div>
 
                 <div className={`navbar-bottom ${mobileMenuOpen ? 'mobile-open' : ''}`}>
                     <ul className="navbar-nav">
-                        {NAV_ITEMS.map((item, index) => (
+                        {MENUS_NAVBAR.map((item, index) => (
                             <li
                                 key={index}
                                 className={`nav-item ${item.isDropdown ? 'dropdown' : ''}`}
@@ -141,7 +168,7 @@ function Navbar() {
                                 >
                                     {item.title}
                                     {item.isDropdown && (
-                                        <FontAwesomeIcon icon={faCaretDown} className="dropdown-icon" />
+                                        <FontAwesomeIcon icon={faCaretDown} className="dropdown-icon"/>
                                     )}
                                 </NavLink>
 
@@ -162,6 +189,44 @@ function Navbar() {
                 </div>
             </div>
         </nav>
+
+    <div className={`panierSidebar ${panierOuvert ? 'open' : ''}`}>
+        <button className="fermerPanier" onClick={togglePanier} aria-label="Fermer le panier">
+            <FontAwesomeIcon icon={faXmark}/>
+        </button>
+        <h2>Votre Panier ({totalItems} articles)</h2>
+        <ul>
+            {cart.map((item) => (
+                <li key={`${item.produit_id}-${item.variante_poids}`}>
+                    <img src={`/assets/images/${item.image}`} alt="Nom du produit"/>
+                    <div className="produitsPanierDetails">
+                        <span className="produitNom">{item.nom}</span>
+                        <span className="produitPoids">Poids : {item.variante_poids}g</span>
+                        <span className="produitNom">{item.prix}€</span>
+                        <div className="actions">
+                            <div className="qte">
+                                {/*On appelle CartContext pour modifier les qtes dynamiquement*/}
+                                <button onClick={() => updateQuantity(item.produit_id, Math.max(1, item.quantite - 1), item.variante_poids)}>-</button>
+                                <span>{item.quantite}</span>
+                                <button onClick={() => updateQuantity(item.produit_id, item.quantite + 1)}>+</button>
+                            </div>
+                            <div className="supp">
+                                <button onClick={() => removeFromCart(item.produit_id)}>
+                                    <FontAwesomeIcon icon={faTrash} />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            ))}
+        </ul>
+
+        <Link to={"/commander"}>
+            <button className="btn-primary btn-checkout" onClick={togglePanier}>Passer commande</button>
+        </Link>
+    </div>
+
+        </>
     );
 }
 

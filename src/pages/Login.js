@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import '../styles/Login.css';
 
 function Login(props) {
     const { login } = useContext(AuthContext); // fonction login venant du contexte
@@ -47,37 +48,64 @@ function Login(props) {
 
 
     return (
-        <div style={{ margin: "50px auto", maxWidth: 400 }}>
-            <h2>Connexion</h2>
-            <form onSubmit={handleSubmit}>
-                <div style={{ marginBottom: 10 }}>
-                    <label>Email :</label>
-                    <br />
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        style={{ width: "100%" }}
-                    />
-                </div>
-                <div style={{ marginBottom: 10 }}>
-                    <label>Mot de passe :</label>
-                    <br />
-                    <input
-                        type="password"
-                        value={mot_de_passe}
-                        onChange={(e) => setMot_de_passe(e.target.value)}
-                        required
-                        style={{ width: "100%" }}
-                    />
-                </div>
-                {errorMsg && (
-                    <div style={{ color: "red", marginBottom: 10 }}>{errorMsg}</div>
-                )}
-                <button type="submit">Se connecter</button>
-            </form>
+        <div className="loginPage">
+            <div className="loginImage">
+
+            </div>
+            <div className="loginInfos">
+                <h2>Connexion</h2>
+                    <form className="forms" onSubmit={handleSubmit}>
+                        <div className="containerInput">
+                            <label>Email</label>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                placeholder="Entrez votre adresse email"
+                            />
+                        </div>
+
+                        <div className="containerInput ">
+                            <label>Mot de passe</label>
+                            <input
+                                type="password"
+                                value={mot_de_passe}
+                                onChange={(e) => setMot_de_passe(e.target.value)}
+                                required
+                                placeholder="Entrez votre mot de passe"
+                            />
+                            <div className="mdp">
+                                {/*TODO changer url*/}
+                                <span className="mdpOublie"><Link to="/connexion">J'ai oublié mon mot de passe</Link></span>
+                            </div>
+                        </div>
+
+
+                        <label id={"checkboxLabel"}>
+                            <input
+                                type="checkbox"
+                                value={mot_de_passe}
+                                onChange={(e) => setMot_de_passe(e.target.value)}
+                                required
+                                placeholder="Entrez votre mot de passe"
+                            />
+                            J'accepte les conditions générales
+                        </label>
+
+                        {errorMsg && (
+                            <div style={{color: "red", marginBottom: 10}}>{errorMsg}</div>
+                        )}
+
+                        <button type="submit" className="btn-primary">Se connecter</button>
+
+                        {/*TODO changer url*/}
+                        <span>Pas encore de compte ? <Link to="/inscription">S'inscrire</Link></span>
+
+                    </form>
+            </div>
         </div>
+
     );
 }
 

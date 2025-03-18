@@ -8,21 +8,29 @@ import { AuthProvider} from "./context/AuthContext";
 import "./styles/fonts.css";
 import AllProducts from "./pages/AllProducts";
 import MonCompte from "./components/MonCompte";
+import Register from "./pages/Register";
+import {CartProvider} from "./context/CartContext";
+import Checkout from "./pages/Checkout";
+
 
 function App() {
   return (
       <AuthProvider>
-          <Router>
-            <Routes>
-                <Route path={"/"} element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route path="produit/:id" element={<PageProduit />}/>
-                    <Route path="connexion" element={<Login />} />
-                    <Route path="produits" element={<AllProducts />} />
-                    <Route path="monCompte" element={<MonCompte />} />
-                </Route>
-            </Routes>
-          </Router>
+          <CartProvider>
+              <Router>
+                <Routes>
+                    <Route path={"/"} element={<Layout />}>
+                        <Route index element={<Home />} />
+                        <Route path="produit/:id" element={<PageProduit />}/>
+                        <Route path="connexion" element={<Login />} />
+                        <Route path="inscription" element={<Register />} />
+                        <Route path="produits" element={<AllProducts />} />
+                        <Route path="monCompte" element={<MonCompte />} />
+                        <Route path="commander" element={<Checkout />} />
+                    </Route>
+                </Routes>
+              </Router>
+          </CartProvider>
       </AuthProvider>
   );
 }

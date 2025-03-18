@@ -13,12 +13,16 @@ function ProductList({api, voirPlus}) {
     useEffect(() => {
         const fetchProduits = async () => {
             try {
+                // Récupère les produits via l'API
                 const response = await axios.get(api);
+                //Stocke les données des produits dans le setter
                 setProduits(response.data);
             } catch(error) {
+                // Affiche un message d'erreur
                 console.error("Erreur de chargement des produits ", error);
             } finally {
-                setIsLoading(false); // on arrete d'afficher le chargement (squelette)
+                // On arrête d'afficher le chargement (squelette)
+                setIsLoading(false);
             }
         };
 
