@@ -24,7 +24,63 @@ function Footer(props) {
 
             { /* Avis clients */ }
             { /* FAQ */ }
-            { /* Footer */ }
+            
+            <footer>
+            <div className="container">
+                {/* Menu 1*/}
+                <div className={"menu1"}>
+                    <h3>Restez informés</h3>
+                    <div className="mail">
+                        <input type="text" placeholder="Votre e-mail" />
+                    </div>
+                </div>
+
+                {/* Menu 2*/}
+                <div className="menu-liens">
+                    <h3>Nos catégories</h3>
+                    <ul>
+                        <li>
+                            <Link to={`/categories/cafes/`}>Cafés</Link>
+                        </li>
+
+                        <li>
+                            <Link to={`/categories/thes/`}>Thés</Link>
+                        </li>
+
+                        <li>
+                            <Link to={`/categories/infusions/`}>Infusions</Link>
+                        </li>
+
+                        <li>
+                            <Link to={`/categories/accessoires/`}>Accessoires</Link>
+                        </li>
+                    </ul>
+                </div>
+
+                {/* Menu 3*/}
+                <div className="menu-liens">
+                    <h3>Liens utiles</h3>
+                    <ul>
+                        <li>
+                            <Link to={`/categories/cafes/`}>Cafés</Link>
+                        </li>
+
+                        <li>
+                            <Link to={`/categories/thes/`}>Thés</Link>
+                        </li>
+
+                        <li>
+                            <Link to={`/categories/infusions/`}>Infusions</Link>
+                        </li>
+
+                        <li>
+                            <Link to={`/categories/accessoires/`}>Accessoires</Link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    
         </div>
 
     )
