@@ -1,16 +1,18 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext, useEffect } from 'react';
 import { AuthContext } from "../context/AuthContext";
 import { CartContext } from "../context/CartContext";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash,faArrowRight, faLocationDot} from "@fortawesome/free-solid-svg-icons";
 import '../styles/Checkout.css';
+import { useNavigate } from "react-router";
 
 
 function Checkout(props) {
 
     const { isAuthenticated, user } = useContext(AuthContext);
     const { cart, totalItems, totalPrice, removeFromCart, updateQuantity } = useContext(CartContext);
+    const navigate = useNavigate();
 
     const [prenom, setPrenom] = useState("")
     const [nom, setNom] = useState("")
@@ -31,6 +33,56 @@ function Checkout(props) {
             setAdresse(user.adresse || "");
         }
     }, [isAuthenticated, user]);
+
+    const handleOrder = async () => {
+        if (!isAuthenticated) {
+            setErrorMsg("❌ Vous devez être connecté pour passer une commande.");
+            return;
+        }
+
+        if (!conditions) {
+            setErrorMsg("❌ Vous devez accepter les conditions générales.");
+            return;
+        }
+
+        const produits = cart.map(item => ({
+            id: item.produit_id,
+            qte: item.quantite
+        }));
+
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/order`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    client_id: user.id,
+                    produits: produits
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                setErrorMsg(data.message || "❌ Erreur lors de la commande");
+                return;
+            }
+
+            alert(`✅ Commande passée avec succès ! Numéro: ${data.commande_id}`);
+
+            // vider le panier après la commande
+            cart.forEach(item => removeFromCart(item.produit_id));
+
+            // si tout est ok on renvoie sur mon compte
+            navigate("/monCompte")
+            // et on recharge sinon le panier est encore affiché
+            window.location.reload();
+
+        } catch (error) {
+            setErrorMsg("❌ Une erreur s'est produite. Veuillez réessayer.");
+        }
+    };
 
     return (
         <div className="checkout">
@@ -195,8 +247,8 @@ function Checkout(props) {
                             <span>{(totalPrice+3.50).toFixed(2)} €</span>
                         </div>
 
-                        <button className="btn-primary">
-                        Confirmer
+                        <button className="btn-primary" onClick={handleOrder}>
+                            Confirmer
                         </button>
                     </div>
                 </div>

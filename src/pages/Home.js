@@ -49,12 +49,12 @@ function Home() {
                 </section>
 
                 <section className="section-bestsellers">
-                    <h2>Nos best-sellers</h2>
+                    <h2>Les cafés</h2>
                     <ProductList api={`${process.env.REACT_APP_API_URL}/api/home-best-sellers`} voirPlus={"/produits"}/>
                 </section>
 
                 <section className="section-bestsellers">
-                    <h2>Nos best-sellers</h2>
+                    <h2>Les thés</h2>
                     <ProductList api={`${process.env.REACT_APP_API_URL}/api/home-best-sellers`} voirPlus={"/produits"}/>
                 </section>
 

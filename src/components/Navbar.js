@@ -18,32 +18,32 @@ import { CartContext } from "../context/CartContext";
 const MENUS_NAVBAR = [
     {
         title: 'Nos cafés',
-        path: '/cafes',
+        path: '/produits',
         isDropdown: true,
         dropdownItems: [
-            { title: 'Café en grain', path: '/cafes/grain' },
-            { title: 'Café moulu', path: '/cafes/moulu' },
-            { title: 'Café en capsule', path: '/cafes/capsule' }
+            { title: 'Café en grain', path: '/produits' },
+            { title: 'Café moulu', path: '/produits' },
+            { title: 'Café en capsule', path: '/produits' }
         ]
     },
     {
         title: 'Nos thés et infusions',
-        path: '/thes',
+        path: '/produits',
         isDropdown: true,
         dropdownItems: [
-            { title: 'Thés noirs', path: '/thes/noirs' },
-            { title: 'Thés verts', path: '/thes/verts' },
-            { title: 'Infusions', path: '/infusions' }
+            { title: 'Thés noirs', path: '/produits' },
+            { title: 'Thés verts', path: '/produits' },
+            { title: 'Infusions', path: '/produits' }
         ]
     },
     {
         title: 'Nos accessoires',
-        path: '/accessoires',
+        path: '/produits',
         isDropdown: true,
         dropdownItems: [
-            { title: 'Cafetières', path: '/accessoires/cafetieres' },
-            { title: 'Théières', path: '/accessoires/theieres' },
-            { title: 'Mugs', path: '/accessoires/mugs' }
+            { title: 'Cafetières', path: '/produits' },
+            { title: 'Théières', path: '/produits' },
+            { title: 'Mugs', path: '/produits' }
         ]
     },
     { title: 'Le blog', path: '/blog', isDropdown: false },

@@ -11,6 +11,10 @@ import MonCompte from "./components/MonCompte";
 import Register from "./pages/Register";
 import {CartProvider} from "./context/CartContext";
 import Checkout from "./pages/Checkout";
+import Erreur404 from "./pages/Erreur404";
+import CGU from "./pages/CGU";
+import CGV from "./pages/CGV";
+import MentionsLegales from "./pages/MentionsLegales";
 
 
 function App() {
@@ -27,6 +31,11 @@ function App() {
                         <Route path="produits" element={<AllProducts />} />
                         <Route path="monCompte" element={<MonCompte />} />
                         <Route path="commander" element={<Checkout />} />
+
+                        <Route path="cgu" element={<CGU />} />
+                        <Route path="cgv" element={<CGV />} />
+                        <Route path="mentions-legales" element={<MentionsLegales />} />
+                        <Route path="*" element={<Erreur404 />} />
                     </Route>
                 </Routes>
               </Router>

@@ -1,90 +1,43 @@
 import React from 'react';
 import '../styles/Footer.css';
+import { Link } from "react-router-dom";
 
-function Footer(props) {
+function Footer() {
     return (
-        <div className="containerFooter">
-            { /* Newsletter
-            <div className="newsletter">
-                <div className="containerNewsletter">
-                    <div className={"containerImages"}>
-                        <img src="./assets/images/sachet_cafe.png" alt=""/>
-                        <img src="./assets/images/gobelet_cafe.png" className={"gobelet"} alt=""/>
-                    </div>
-                    <div className={"containerText"}>
-                        <span className="titre">Restez branché l'équipe</span>
-                        <span className="desc">
-                        Abonnez-vous à notre newsletter et profitez de 10% de remise sur votre 1ère commande.
-                    </span>
-                        <div className="btn-secondary">S'inscrire</div>
-                    </div>
-                </div>
-            </div>
-            */}
-
-            { /* Avis clients */ }
-            { /* FAQ */ }
-            
-            <footer>
+        <footer>
             <div className="container">
-                {/* Menu 1*/}
-                <div className={"menu1"}>
+                {/* Newsletter */}
+                <div className="menu-newsletter">
                     <h3>Restez informés</h3>
-                    <div className="mail">
-                        <input type="text" placeholder="Votre e-mail" />
-                    </div>
+                    <form className="newsletter-form">
+                        <input type="email" placeholder="Votre e-mail" required />
+                        <button type="submit">S'inscrire</button>
+                    </form>
                 </div>
 
-                {/* Menu 2*/}
+                {/* Menu Catégories */}
                 <div className="menu-liens">
                     <h3>Nos catégories</h3>
                     <ul>
-                        <li>
-                            <Link to={`/categories/cafes/`}>Cafés</Link>
-                        </li>
-
-                        <li>
-                            <Link to={`/categories/thes/`}>Thés</Link>
-                        </li>
-
-                        <li>
-                            <Link to={`/categories/infusions/`}>Infusions</Link>
-                        </li>
-
-                        <li>
-                            <Link to={`/categories/accessoires/`}>Accessoires</Link>
-                        </li>
+                        <li><Link to="/categories/cafes/">Cafés</Link></li>
+                        <li><Link to="/categories/thes/">Thés</Link></li>
+                        <li><Link to="/categories/infusions/">Infusions</Link></li>
+                        <li><Link to="/categories/accessoires/">Accessoires</Link></li>
                     </ul>
                 </div>
 
-                {/* Menu 3*/}
+                {/* Liens utiles */}
                 <div className="menu-liens">
                     <h3>Liens utiles</h3>
                     <ul>
-                        <li>
-                            <Link to={`/categories/cafes/`}>Cafés</Link>
-                        </li>
-
-                        <li>
-                            <Link to={`/categories/thes/`}>Thés</Link>
-                        </li>
-
-                        <li>
-                            <Link to={`/categories/infusions/`}>Infusions</Link>
-                        </li>
-
-                        <li>
-                            <Link to={`/categories/accessoires/`}>Accessoires</Link>
-                        </li>
+                        <li><Link to="/cgu">CGU</Link></li>
+                        <li><Link to="/cgv">CGV</Link></li>
+                        <li><Link to="/mentions-legales">Mentions légales</Link></li>
                     </ul>
                 </div>
             </div>
         </footer>
-    
-        </div>
-
-    )
-        ;
+    );
 }
 
 export default Footer;
